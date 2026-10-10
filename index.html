@@ -7,8 +7,8 @@
 <title>Tokyo день 1</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
-:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f24;--mute:#6b7080;--line:#e3e0d8;--acc:#c2410c;--acc2:#1d4ed8;--soft:#fff7ed;--ok:#15803d}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b22;--ink:#eceef3;--mute:#9aa1b2;--line:#2a2f3a;--acc:#fb923c;--acc2:#7cb4ff;--soft:#2a1d12;--ok:#4ade80}}
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f24;--mute:#6b7080;--line:#e3e0d8;--acc:#c2410c;--acc2:#1d4ed8;--soft:#fff7ed;--bad:#b91c1c}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b22;--ink:#eceef3;--mute:#9aa1b2;--line:#2a2f3a;--acc:#fb923c;--acc2:#7cb4ff;--soft:#2a1d12;--bad:#f87171}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Hiragino Sans",sans-serif}
 .wrap{max-width:760px;margin:0 auto;padding:0 16px 40px}
@@ -19,6 +19,8 @@ h1{font-size:24px;margin:0 0 4px;line-height:1.2}
 .wx span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:13px}
 .alert{background:var(--soft);border:1px solid var(--acc);border-radius:14px;padding:12px 14px;margin:12px 0}
 .alert b{color:var(--acc)}
+.alert .no{color:var(--bad);font-weight:700}
+.alert ul{margin:6px 0 0;padding-left:18px}
 #map{height:46vh;min-height:280px;border-radius:14px;border:1px solid var(--line);margin:12px 0}
 .locate{display:inline-block;margin:-4px 0 8px;font-size:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0}
@@ -30,15 +32,17 @@ h1{font-size:24px;margin:0 0 4px;line-height:1.2}
 h2{font-size:18px;margin:2px 0 6px;line-height:1.25}
 p{margin:6px 0}
 .pics{display:flex;gap:8px;overflow-x:auto;margin:10px -14px 4px;padding:0 14px;scroll-snap-type:x mandatory}
-.pics figure{margin:0;flex:0 0 78%;scroll-snap-align:start}
-.pics img{width:100%;height:200px;object-fit:cover;border-radius:10px;display:block}
+.pics figure{margin:0;flex:0 0 82%;scroll-snap-align:start}
+.pics img{width:100%;height:220px;object-fit:cover;border-radius:10px;display:block}
 .pics figcaption{font-size:11px;color:var(--mute);margin-top:3px}
 .pics figcaption a{color:var(--mute)}
+.hint{font-size:12px;color:var(--mute)}
 .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .btn{display:inline-block;text-decoration:none;border-radius:10px;padding:9px 12px;font-size:14px;font-weight:600;background:var(--acc2);color:#fff}
 .btn.o{background:transparent;color:var(--acc2);border:1px solid var(--acc2)}
 .btn.t{background:var(--acc)}
-h3{font-size:17px;margin:24px 0 6px}
+h3{font-size:19px;margin:28px 0 4px}
+.lead{color:var(--mute);font-size:14px;margin:0 0 8px}
 ul{padding-left:20px;margin:6px 0}
 li{margin:4px 0}
 .foot{font-size:12px;color:var(--mute);margin-top:24px}
@@ -50,52 +54,59 @@ li{margin:4px 0}
 <body>
 <div class="wrap">
 <header>
-<h1>Tokyo · сб 10.10 · день 1</h1>
-<div class="sub">Meiji → Omotesando → Shibuya → закат на крыше</div>
+<h1>Tokyo · сб 10.10 · волна города</h1>
+<div class="sub">Yoyogi Park → Harajuku → Omotesando → Cat Street → Shibuya → закат</div>
 <div class="wx"><span>☀️ ясно весь день</span><span>+16 / +25</span><span>дождь 0</span><span>закат 17:12</span><span>Fuji без облаков</span></div>
 </header>
 
-<div class="alert">🎟 <b>Сначала билет SHIBUYA SKY на 16:20-16:40.</b> Online 3 400 ¥ (вход после 15:00), в кассе на 300 ¥ дороже. Если online распродано, в кассе тоже нет. Наличие слотов я проверить не смог, смотри в телефоне.
-<div class="btns"><a class="btn t" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Купить билет</a></div></div>
+<div class="alert">🎟 <b>SHIBUYA SKY, проверено в 11:08</b>
+<ul>
+<li>Сегодня билеты на вход до 14:59: <span class="no">× распроданы</span>.</li>
+<li>Закатные (15:00-21:20, 3 400 ¥): статус не увидел, сайт Webket сейчас ставит всех в электронную очередь (Queue-it). В праздничную субботу скорее всего тоже распроданы, но это догадка.</li>
+<li>Купить можешь только ты: нужна регистрация в Webket, капча и карта. С телефона 2-3 минуты. Вход в течение 20 минут от начала слота, 14 этаж, сидеть наверху сколько угодно.</li>
+<li>Нет билетов → закат на <b>смотровой мэрии</b> (бесплатно, без билетов), карточка B ниже.</li>
+</ul>
+<div class="btns"><a class="btn t" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Проверить и купить</a></div></div>
 
 <div id="map"></div>
 <a href="#" class="locate" id="loc">📍 Показать, где я</a>
 
 <div class="card"><div class="top"><div class="num">1</div><div>
-<div class="time">11:15 · 20 мин · 209 ¥</div>
-<h2>Выход: JR Akihabara → Harajuku</h2>
-<p>Жёлтая линия JR Sobu (направление Mitaka) до Yoyogi, там 1 остановка по Yamanote до Harajuku. Без пересадки можно по Yamanote через Tokyo, это 32 мин.</p>
+<div class="time">сейчас · 20 мин · 209 ¥</div>
+<h2>JR Akihabara → Harajuku</h2>
+<p>Жёлтая линия JR Sobu (направление Mitaka) до Yoyogi, там 1 остановка по Yamanote до Harajuku. Без пересадки: Yamanote через Tokyo, 32 мин.</p>
 <div class="btns"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Akihabara+Station&destination=Harajuku+Station&travelmode=transit" target="_blank" rel="noopener">Маршрут в Google Maps</a></div>
 </div></div></div>
 
 <div class="card"><div class="top"><div class="num">2</div><div>
-<div class="time">11:40-13:00 · бесплатно</div>
-<h2>Meiji Jingu</h2>
-<p>Храм императора Meiji (1920) в лесу из ~100 000 деревьев посреди города. В октябре открыт 5:40-16:40, поэтому идём первым. От станции до главного зала ~10 мин по лесной аллее. В выходные часто проходят свадебные процессии.</p>
+<div class="time">~12:00-13:00 · бесплатно</div>
+<h2>Yoyogi Park - центральный парк</h2>
+<p>Большой городской парк в 5 минутах от станции Harajuku: газоны, пикники, музыканты и уличные артисты по выходным. Без забора и билетов, открыт круглосуточно. Это и есть «жизнь города» в выходной.</p>
+<p class="hint">Фото осенние (ноябрь), сейчас деревья ещё зелёные. Храм Meiji Jingu в соседнем лесу, если захочется: см. блок с фото ниже.</p>
 </div></div>
 <div class="pics">
-<figure><img src="img/meiji1.jpg" alt="Ворота Meiji" loading="lazy"><figcaption>Ворота у входа. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jingu_Torii_1.jpg">Zairon, CC BY-SA 4.0</a></figcaption></figure>
-<figure><img src="img/meiji2.jpg" alt="Главный зал" loading="lazy"><figcaption>Главный зал. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jing%C5%AB_main_hall.jpg">Hyppolyte de Saint-Rambert, CC BY-SA 4.0</a></figcaption></figure>
-<figure><img src="img/meiji3.jpg" alt="Свадьба" loading="lazy"><figcaption>Свадебная процессия. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jingu_wedding_procession_-_P1000847.jpg">Shinichi Sugiyama, CC BY-SA 2.0</a></figcaption></figure>
+<figure><img src="img/yoyogi2.jpg" alt="Yoyogi Park" loading="lazy"><figcaption>Аллея в парке. <a href="https://commons.wikimedia.org/wiki/File:Yoyogipark_in_Autumn_1.jpg">Kakidai, CC BY-SA 4.0</a></figcaption></figure>
+<figure><img src="img/yoyogi1.jpg" alt="Yoyogi Park осенью" loading="lazy"><figcaption>Клёны в ноябре. <a href="https://commons.wikimedia.org/wiki/File:Yoyogi_Koen_in_autumn.jpg">BradBeattie, CC BY-SA 3.0</a></figcaption></figure>
 </div>
-<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Meiji+Jingu" target="_blank" rel="noopener">Google Maps</a></div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Yoyogi+Park" target="_blank" rel="noopener">Google Maps</a></div>
 </div>
 
 <div class="card"><div class="top"><div class="num">3</div><div>
 <div class="time">13:00-14:30</div>
-<h2>Omotesando: обед и бульвар</h2>
-<p>Широкий бульвар с деревьями и архитектурными бутиками брендов, здесь же обед. Узкая Takeshita-dori с молодёжной модой в праздничную субботу будет забита, на неё хватит глянуть с угла у станции.</p>
+<h2>Harajuku и Omotesando: улицы и обед</h2>
+<p>Takeshita-dori - узкая улица молодёжной моды, самая плотная толпа Tokyo, в праздничную субботу особенно. Пройти 5 минут ради ощущения. Потом широкий бульвар Omotesando с деревьями и архитектурными бутиками брендов, здесь обед.</p>
 </div></div>
 <div class="pics">
+<figure><img src="img/takeshita.jpg" alt="Takeshita" loading="lazy"><figcaption>Takeshita-dori. <a href="https://commons.wikimedia.org/wiki/File:Takeshita_Street_in_Harajuku.jpg">Dylan McGannon, CC0</a></figcaption></figure>
 <figure><img src="img/omote1.jpg" alt="Omotesando" loading="lazy"><figcaption>Omotesando. <a href="https://commons.wikimedia.org/wiki/File:Omotesando_Avenue_at_sunset_from_pedestrian_bridge,_Jingumae,_Shibuya,_Tokyo.jpg">gog.creator, CC BY 4.0</a></figcaption></figure>
 </div>
-<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Omotesando+Hills" target="_blank" rel="noopener">Google Maps</a><a class="btn o" href="https://www.google.com/maps/search/?api=1&query=Takeshita+Street+Harajuku" target="_blank" rel="noopener">Takeshita-dori</a></div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Takeshita+Street+Harajuku" target="_blank" rel="noopener">Takeshita-dori</a><a class="btn o" href="https://www.google.com/maps/search/?api=1&query=Omotesando+Hills" target="_blank" rel="noopener">Omotesando</a></div>
 </div>
 
 <div class="card"><div class="top"><div class="num">4</div><div>
 <div class="time">14:30 · пешком 15-20 мин</div>
 <h2>Cat Street → Shibuya</h2>
-<p>Тихая пешеходная улица параллельно шумным улицам, магазины и кафе. Выводит прямо к Miyashita Park в Shibuya.</p>
+<p>Тихая пешеходная улица параллельно шумным, магазины и кафе. Выводит к Miyashita Park в Shibuya.</p>
 </div></div>
 <div class="pics">
 <figure><img src="img/cat1.jpg" alt="Cat Street" loading="lazy"><figcaption>Cat Street. <a href="https://commons.wikimedia.org/wiki/File:Harajuku-Cat-street-04.jpg">Rs1421, CC BY-SA 3.0</a></figcaption></figure>
@@ -116,10 +127,10 @@ li{margin:4px 0}
 </div>
 
 <div class="card"><div class="top"><div class="num">6</div><div>
-<div class="time">16:20-17:45 · закат 17:12</div>
+<div class="time">если есть билет · 16:20-17:45 · закат 17:12</div>
 <h2>SHIBUYA SKY - крыша на 229 м</h2>
 <p>Открытая крыша небоскрёба Shibuya Scramble Square. В ясный вечер на западе виден силуэт Fuji.</p>
-<p><b>На крышу нельзя:</b> сумку, рюкзак, кепку, селфи-палку. Всё это оставляют в шкафчиках на 46 этаже. Телефон можно.</p>
+<p><b>На крышу нельзя:</b> сумку, рюкзак, кепку, селфи-палку. Всё это в шкафчики на 46 этаже. Телефон можно.</p>
 </div></div>
 <div class="pics">
 <figure><img src="img/sky1.jpg" alt="Shibuya Sky" loading="lazy"><figcaption>Крыша. <a href="https://commons.wikimedia.org/wiki/File:Shibuya_Sky_Observation_Deck_(53415730632).jpg">Stephen Kelly, CC BY 2.0</a></figcaption></figure>
@@ -129,9 +140,9 @@ li{margin:4px 0}
 </div>
 
 <div class="card alt"><div class="top"><div class="num g">B</div><div>
-<div class="time">если билетов нет · бесплатно</div>
-<h2>Смотровая мэрии Tokyo (Shinjuku)</h2>
-<p>202 м, вход бесплатный, 9:30-22:00 (вход до 21:30). От Shibuya 3 остановки по Yamanote до Shinjuku, потом ~10 мин пешком от западного выхода. Fuji оттуда тоже видно.</p>
+<div class="time">если билета нет · выйти из Shibuya в 16:30 · бесплатно</div>
+<h2>Закат на смотровой мэрии Tokyo (Shinjuku)</h2>
+<p>202 м, вход бесплатный и без билетов, 9:30-22:00 (вход до 21:30). От Shibuya 3 остановки по Yamanote до Shinjuku, потом ~10 мин пешком от западного выхода. Fuji оттуда тоже видно. Ужин потом в Shinjuku.</p>
 </div></div>
 <div class="pics">
 <figure><img src="img/tmg.jpg" alt="Вид с мэрии" loading="lazy"><figcaption>Вид со смотровой. <a href="https://commons.wikimedia.org/wiki/File:A_view_from_Tokyo_Metropolitan_Government_Building_Observation_-1_(7283081598).jpg">Takashi Hososhima, CC BY-SA 2.0</a></figcaption></figure>
@@ -140,45 +151,71 @@ li{margin:4px 0}
 </div>
 
 <div class="card"><div class="top"><div class="num">7</div><div>
-<div class="time">вечер · 28-31 мин · 253 ¥</div>
-<h2>Ужин в Shibuya и домой</h2>
-<p>Обратно: Yamanote до Yoyogi, там жёлтая Sobu до Akihabara.</p>
-<div class="btns"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Shibuya+Station&destination=Akihabara+Station&travelmode=transit" target="_blank" rel="noopener">Маршрут домой</a></div>
+<div class="time">вечер · ~30 мин</div>
+<h2>Домой</h2>
+<p>Из Shibuya: Yamanote до Yoyogi, там жёлтая Sobu до Akihabara, 28-31 мин, 253 ¥. Из Shinjuku: жёлтая Sobu или оранжевая Chuo до Ochanomizu/Kanda.</p>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Shibuya+Station&destination=Akihabara+Station&travelmode=transit" target="_blank" rel="noopener">Из Shibuya</a><a class="btn o" href="https://www.google.com/maps/dir/?api=1&origin=Shinjuku+Station&destination=Akihabara+Station&travelmode=transit" target="_blank" rel="noopener">Из Shinjuku</a></div>
 </div></div></div>
+
+<h3>Что такое «императорские» места</h3>
+<p class="lead">Чтобы решить, нужно ли тебе это. Обе точки - не город, а тишина и история.</p>
+
+<div class="card"><div class="top"><div class="num g">M</div><div>
+<div class="time">рядом с Yoyogi Park · +30-40 мин · бесплатно · до 16:40</div>
+<h2>Meiji Jingu - храм, а не дворец</h2>
+<p>Синтоистское святилище 1920 года в честь императора Meiji. Главное в нём не здание, а лес из ~100 000 деревьев посреди мегаполиса: широкие гравийные аллеи, огромные деревянные ворота, тишина. Зал простой, деревянный. По выходным часто видно свадебные процессии в кимоно.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/meiji1.jpg" alt="Ворота Meiji" loading="lazy"><figcaption>Ворота у входа в лес. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jingu_Torii_1.jpg">Zairon, CC BY-SA 4.0</a></figcaption></figure>
+<figure><img src="img/meiji2.jpg" alt="Главный зал" loading="lazy"><figcaption>Главный зал. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jing%C5%AB_main_hall.jpg">Hyppolyte de Saint-Rambert, CC BY-SA 4.0</a></figcaption></figure>
+<figure><img src="img/meiji3.jpg" alt="Свадьба" loading="lazy"><figcaption>Свадебная процессия. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jingu_wedding_procession_-_P1000847.jpg">Shinichi Sugiyama, CC BY-SA 2.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Meiji+Jingu" target="_blank" rel="noopener">Google Maps</a></div>
+</div>
+
+<div class="card"><div class="top"><div class="num g">P</div><div>
+<div class="time">у станции Tokyo, 2 остановки от отеля · не по сегодняшнему маршруту</div>
+<h2>Imperial Palace - дворец императора</h2>
+<p>Здесь живёт император, сам дворец закрыт. Снаружи видно рвы, каменные стены бывшего замка Edo и мост Nijubashi на фоне небоскрёбов Marunouchi. Восточный сад - руины замка с газонами и соснами, бесплатно; по справочникам открыт с 9:00 до 16:30, закрыт по пн и пт. Впечатление спокойное, «город» здесь только фоном.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/palace1.jpg" alt="Nijubashi" loading="lazy"><figcaption>Мост Nijubashi. <a href="https://commons.wikimedia.org/wiki/File:Imperial_Palace_Tokyo_Nijubashi_Bridge.JPG">Chris 73, CC BY-SA 3.0</a></figcaption></figure>
+<figure><img src="img/palace2.jpg" alt="Ров" loading="lazy"><figcaption>Ров и стены. <a href="https://commons.wikimedia.org/wiki/File:Chiyoda_Tokyo_August_Tokyo_Imperial_Palace_2014_74.JPG">Piotrus, CC BY-SA 3.0</a></figcaption></figure>
+<figure><img src="img/palace4.jpg" alt="Восточный сад и небоскрёбы" loading="lazy"><figcaption>Восточный сад и Marunouchi. <a href="https://commons.wikimedia.org/wiki/File:Imperial_Palace_East_Gardens_(9000324274).jpg">Guilhem Vellut, CC BY 2.0</a></figcaption></figure>
+<figure><img src="img/palace3.jpg" alt="Восточный сад" loading="lazy"><figcaption>Восточный сад. <a href="https://commons.wikimedia.org/wiki/File:Imperial_Palace_East_Garden_@_Tokyo_(11165738014).jpg">Guilhem Vellut, CC BY 2.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Nijubashi+Bridge" target="_blank" rel="noopener">Google Maps</a></div>
+</div>
 
 <h3>Следующие дни</h3>
 <ul>
-<li><b>Вс 11.10:</b> у вершины Fuji 0-11% облаков. Это единственный надёжный день для Hakone, в пн облачность там ~50%. Если едем, места на Romancecar из Shinjuku купить сегодня.</li>
+<li><b>Вс 11.10:</b> у вершины Fuji 0-11% облаков. Единственный надёжный день для Hakone, в пн облачность там ~50%. Если едем, места на Romancecar из Shinjuku купить сегодня.</li>
 <li><b>Пн 12.10, праздник:</b> открыт сад Shinjuku Gyoen. Конные лучники yabusame в парке Toyama обычно в этот день, объявления на 2026 нет. Главный день фестиваля Kappabashi.</li>
 <li><b>Вт 13.10, облачно, слабая морось:</b> старый Tokyo рядом с отелем - Asakusa, Yanaka, Ueno.</li>
 </ul>
 
-<div class="foot">Срез 10.10.2026, 10:30 JST. Погода: Open-Meteo. Часы: <a href="https://www.meijijingu.or.jp/en/visit/">Meiji Jingu</a>, <a href="https://www.shibuya-scramble-square.com/sky/ticket/">Shibuya Sky</a>, <a href="https://www.gotokyo.org/en/tourists/info/observatory.html">GO TOKYO</a>. Поезда: Yahoo!乗換案内. Карта: Esri. Фото: Wikimedia Commons.</div>
+<div class="foot">Срез 10.10.2026, 11:10 JST. Погода: Open-Meteo. Билеты: Webket (официальная продажа SHIBUYA SKY), 11:08. Часы: <a href="https://www.meijijingu.or.jp/en/visit/">Meiji Jingu</a>, <a href="https://www.shibuya-scramble-square.com/sky/ticket/">Shibuya Sky</a>, <a href="https://www.gotokyo.org/en/tourists/info/observatory.html">GO TOKYO</a>, <a href="https://trulytokyo.com/imperial-palace-east-gardens/">Truly Tokyo</a>. Поезда: Yahoo!乗換案内. Карта: Esri. Фото: Wikimedia Commons.</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-var pts=[
- {n:'2',name:'Meiji Jingu',ll:[35.6748,139.6996]},
- {n:'',name:'JR Harajuku',ll:[35.6705,139.7024]},
- {n:'3',name:'Omotesando',ll:[35.6672,139.7089]},
- {n:'4',name:'Cat Street',ll:[35.6670,139.7063]},
- {n:'5',name:'Miyashita Park',ll:[35.6620,139.7019]},
- {n:'',name:'Перекрёсток Shibuya',ll:[35.6595,139.7005]},
- {n:'6',name:'SHIBUYA SKY',ll:[35.6584,139.7022]}
-];
 var map=L.map('map',{scrollWheelZoom:false});
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles © Esri',maxZoom:18}).addTo(map);
 function pin(t,g){return L.divIcon({className:'',html:'<div class="pin'+(g?' g':'')+'">'+t+'</div>',iconSize:[26,26],iconAnchor:[13,13]})}
-var route=[pts[1].ll,pts[0].ll,pts[1].ll,pts[2].ll,pts[3].ll,pts[4].ll,pts[5].ll,pts[6].ll];
-L.polyline(route,{color:'#c2410c',weight:4,opacity:.7,dashArray:'6 6'}).addTo(map);
-pts.forEach(function(p){
- if(p.n){L.marker(p.ll,{icon:pin(p.n)}).addTo(map).bindPopup('<b>'+p.name+'</b><br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.name==='Omotesando'?'Omotesando Hills':p.name)+'">Google Maps</a>');}
- else{L.circleMarker(p.ll,{radius:5,color:'#c2410c',fillOpacity:1}).addTo(map).bindPopup(p.name);}
+function gm(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}
+var H=[35.6705,139.7024],Y=[35.6714,139.6952],T=[35.6712,139.7050],O=[35.6672,139.7089],C=[35.6670,139.7063],MP=[35.6620,139.7019],X=[35.6595,139.7005],S=[35.6584,139.7022];
+L.polyline([H,Y,H,T,O,C,MP,X,S],{color:'#c2410c',weight:4,opacity:.7,dashArray:'6 6'}).addTo(map);
+[[Y,'2','Yoyogi Park'],[T,'3','Takeshita Street Harajuku'],[O,'','Omotesando Hills'],[C,'4','Cat Street Shibuya'],[MP,'5','MIYASHITA PARK Shibuya'],[X,'','Shibuya Scramble Crossing'],[S,'6','SHIBUYA SKY']].forEach(function(p){
+ var html='<b>'+p[2]+'</b><br><a target="_blank" href="'+gm(p[2])+'">Google Maps</a>';
+ if(p[1])L.marker(p[0],{icon:pin(p[1])}).addTo(map).bindPopup(html);
+ else L.circleMarker(p[0],{radius:5,color:'#c2410c',fillOpacity:1}).addTo(map).bindPopup(html);
 });
+L.circleMarker(H,{radius:5,color:'#c2410c',fillOpacity:1}).addTo(map).bindPopup('JR Harajuku');
 L.marker([35.6986,139.7739],{icon:pin('1')}).addTo(map).bindPopup('<b>JR Akihabara</b> - старт');
-L.marker([35.6895,139.6917],{icon:pin('B',1)}).addTo(map).bindPopup('<b>Смотровая мэрии</b> - запасной вариант');
-map.fitBounds(L.latLngBounds(pts.map(function(p){return p.ll})),{padding:[24,24]});
+L.marker([35.6748,139.6996],{icon:pin('M',1)}).addTo(map).bindPopup('<b>Meiji Jingu</b> - по желанию<br><a target="_blank" href="'+gm('Meiji Jingu')+'">Google Maps</a>');
+L.marker([35.6895,139.6917],{icon:pin('B',1)}).addTo(map).bindPopup('<b>Смотровая мэрии</b> - закат, если нет билета<br><a target="_blank" href="'+gm('Tokyo Metropolitan Government Building Observatory')+'">Google Maps</a>');
+L.marker([35.6802,139.7536],{icon:pin('P',1)}).addTo(map).bindPopup('<b>Imperial Palace</b>, Nijubashi<br><a target="_blank" href="'+gm('Nijubashi Bridge')+'">Google Maps</a>');
+map.fitBounds(L.latLngBounds([Y,H,T,O,C,MP,X,S]),{padding:[24,24]});
 var me;
 document.getElementById('loc').onclick=function(e){e.preventDefault();
  if(!navigator.geolocation){alert('Геолокация недоступна');return;}
