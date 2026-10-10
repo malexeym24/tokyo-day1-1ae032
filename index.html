@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Tokyo день 1</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f24;--mute:#6b7080;--line:#e3e0d8;--acc:#c2410c;--acc2:#1d4ed8;--soft:#fff7ed;--ok:#15803d}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b22;--ink:#eceef3;--mute:#9aa1b2;--line:#2a2f3a;--acc:#fb923c;--acc2:#7cb4ff;--soft:#2a1d12;--ok:#4ade80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Hiragino Sans",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 40px}
+header{padding:20px 0 8px}
+h1{font-size:24px;margin:0 0 4px;line-height:1.2}
+.sub{color:var(--mute);font-size:15px}
+.wx{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.wx span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:13px}
+.alert{background:var(--soft);border:1px solid var(--acc);border-radius:14px;padding:12px 14px;margin:12px 0}
+.alert b{color:var(--acc)}
+#map{height:46vh;min-height:280px;border-radius:14px;border:1px solid var(--line);margin:12px 0}
+.locate{display:inline-block;margin:-4px 0 8px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0}
+.card.alt{border-style:dashed}
+.top{display:flex;gap:10px;align-items:flex-start}
+.num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+.num.g{background:#64748b}
+.time{font-size:13px;color:var(--acc);font-weight:700;letter-spacing:.3px}
+h2{font-size:18px;margin:2px 0 6px;line-height:1.25}
+p{margin:6px 0}
+.pics{display:flex;gap:8px;overflow-x:auto;margin:10px -14px 4px;padding:0 14px;scroll-snap-type:x mandatory}
+.pics figure{margin:0;flex:0 0 78%;scroll-snap-align:start}
+.pics img{width:100%;height:200px;object-fit:cover;border-radius:10px;display:block}
+.pics figcaption{font-size:11px;color:var(--mute);margin-top:3px}
+.pics figcaption a{color:var(--mute)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{display:inline-block;text-decoration:none;border-radius:10px;padding:9px 12px;font-size:14px;font-weight:600;background:var(--acc2);color:#fff}
+.btn.o{background:transparent;color:var(--acc2);border:1px solid var(--acc2)}
+.btn.t{background:var(--acc)}
+h3{font-size:17px;margin:24px 0 6px}
+ul{padding-left:20px;margin:6px 0}
+li{margin:4px 0}
+.foot{font-size:12px;color:var(--mute);margin-top:24px}
+.foot a{color:var(--mute)}
+.pin{width:26px;height:26px;border-radius:50%;background:#c2410c;color:#fff;font:700 13px/26px -apple-system,sans-serif;text-align:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.g{background:#64748b}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Tokyo · сб 10.10 · день 1</h1>
+<div class="sub">Meiji → Omotesando → Shibuya → закат на крыше</div>
+<div class="wx"><span>☀️ ясно весь день</span><span>+16 / +25</span><span>дождь 0</span><span>закат 17:12</span><span>Fuji без облаков</span></div>
+</header>
+
+<div class="alert">🎟 <b>Сначала билет SHIBUYA SKY на 16:20-16:40.</b> Online 3 400 ¥ (вход после 15:00), в кассе на 300 ¥ дороже. Если online распродано, в кассе тоже нет. Наличие слотов я проверить не смог, смотри в телефоне.
+<div class="btns"><a class="btn t" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Купить билет</a></div></div>
+
+<div id="map"></div>
+<a href="#" class="locate" id="loc">📍 Показать, где я</a>
+
+<div class="card"><div class="top"><div class="num">1</div><div>
+<div class="time">11:15 · 20 мин · 209 ¥</div>
+<h2>Выход: JR Akihabara → Harajuku</h2>
+<p>Жёлтая линия JR Sobu (направление Mitaka) до Yoyogi, там 1 остановка по Yamanote до Harajuku. Без пересадки можно по Yamanote через Tokyo, это 32 мин.</p>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Akihabara+Station&destination=Harajuku+Station&travelmode=transit" target="_blank" rel="noopener">Маршрут в Google Maps</a></div>
+</div></div></div>
+
+<div class="card"><div class="top"><div class="num">2</div><div>
+<div class="time">11:40-13:00 · бесплатно</div>
+<h2>Meiji Jingu</h2>
+<p>Храм императора Meiji (1920) в лесу из ~100 000 деревьев посреди города. В октябре открыт 5:40-16:40, поэтому идём первым. От станции до главного зала ~10 мин по лесной аллее. В выходные часто проходят свадебные процессии.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/meiji1.jpg" alt="Ворота Meiji" loading="lazy"><figcaption>Ворота у входа. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jingu_Torii_1.jpg">Zairon, CC BY-SA 4.0</a></figcaption></figure>
+<figure><img src="img/meiji2.jpg" alt="Главный зал" loading="lazy"><figcaption>Главный зал. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jing%C5%AB_main_hall.jpg">Hyppolyte de Saint-Rambert, CC BY-SA 4.0</a></figcaption></figure>
+<figure><img src="img/meiji3.jpg" alt="Свадьба" loading="lazy"><figcaption>Свадебная процессия. <a href="https://commons.wikimedia.org/wiki/File:Meiji-jingu_wedding_procession_-_P1000847.jpg">Shinichi Sugiyama, CC BY-SA 2.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Meiji+Jingu" target="_blank" rel="noopener">Google Maps</a></div>
+</div>
+
+<div class="card"><div class="top"><div class="num">3</div><div>
+<div class="time">13:00-14:30</div>
+<h2>Omotesando: обед и бульвар</h2>
+<p>Широкий бульвар с деревьями и архитектурными бутиками брендов, здесь же обед. Узкая Takeshita-dori с молодёжной модой в праздничную субботу будет забита, на неё хватит глянуть с угла у станции.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/omote1.jpg" alt="Omotesando" loading="lazy"><figcaption>Omotesando. <a href="https://commons.wikimedia.org/wiki/File:Omotesando_Avenue_at_sunset_from_pedestrian_bridge,_Jingumae,_Shibuya,_Tokyo.jpg">gog.creator, CC BY 4.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Omotesando+Hills" target="_blank" rel="noopener">Google Maps</a><a class="btn o" href="https://www.google.com/maps/search/?api=1&query=Takeshita+Street+Harajuku" target="_blank" rel="noopener">Takeshita-dori</a></div>
+</div>
+
+<div class="card"><div class="top"><div class="num">4</div><div>
+<div class="time">14:30 · пешком 15-20 мин</div>
+<h2>Cat Street → Shibuya</h2>
+<p>Тихая пешеходная улица параллельно шумным улицам, магазины и кафе. Выводит прямо к Miyashita Park в Shibuya.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/cat1.jpg" alt="Cat Street" loading="lazy"><figcaption>Cat Street. <a href="https://commons.wikimedia.org/wiki/File:Harajuku-Cat-street-04.jpg">Rs1421, CC BY-SA 3.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Omotesando+Hills&destination=MIYASHITA+PARK+Shibuya&travelmode=walking" target="_blank" rel="noopener">Пешком в Google Maps</a></div>
+</div>
+
+<div class="card"><div class="top"><div class="num">5</div><div>
+<div class="time">15:00-16:15</div>
+<h2>Shibuya: Miyashita Park, перекрёсток, Hachiko</h2>
+<p>Miyashita Park - парк на крыше торгового центра. Дальше знаменитый перекрёсток Shibuya Scramble и памятник Hachiko у станции.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/shibuya1.jpg" alt="Перекрёсток" loading="lazy"><figcaption>Перекрёсток сверху. <a href="https://commons.wikimedia.org/wiki/File:Shibuya_scramble_crossing_during_Halloween_2023,_actually_less_crowded_than_usual,_high_police_presence_2.jpg">Syced, CC0</a></figcaption></figure>
+<figure><img src="img/hachiko.jpg" alt="Hachiko" loading="lazy"><figcaption>Hachiko. <a href="https://commons.wikimedia.org/wiki/File:The_Hachiko_statue_at_Shibuya,_Tokyo,_Japan.jpg">Joli Rumi, CC BY-SA 4.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=MIYASHITA+PARK+Shibuya" target="_blank" rel="noopener">Miyashita Park</a><a class="btn o" href="https://www.google.com/maps/search/?api=1&query=Shibuya+Scramble+Crossing" target="_blank" rel="noopener">Перекрёсток</a><a class="btn o" href="https://www.google.com/maps/search/?api=1&query=Hachiko+Statue" target="_blank" rel="noopener">Hachiko</a></div>
+</div>
+
+<div class="card"><div class="top"><div class="num">6</div><div>
+<div class="time">16:20-17:45 · закат 17:12</div>
+<h2>SHIBUYA SKY - крыша на 229 м</h2>
+<p>Открытая крыша небоскрёба Shibuya Scramble Square. В ясный вечер на западе виден силуэт Fuji.</p>
+<p><b>На крышу нельзя:</b> сумку, рюкзак, кепку, селфи-палку. Всё это оставляют в шкафчиках на 46 этаже. Телефон можно.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/sky1.jpg" alt="Shibuya Sky" loading="lazy"><figcaption>Крыша. <a href="https://commons.wikimedia.org/wiki/File:Shibuya_Sky_Observation_Deck_(53415730632).jpg">Stephen Kelly, CC BY 2.0</a></figcaption></figure>
+<figure><img src="img/sky2.jpg" alt="Вид с Shibuya Sky" loading="lazy"><figcaption>Вид на центр. <a href="https://commons.wikimedia.org/wiki/File:Tokyo_Tower_and_Skyscrapers_from_Shibuya_Sky_Observation_Deck_(53416648661).jpg">Stephen Kelly, CC BY 2.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn t" href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Билет</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=SHIBUYA+SKY" target="_blank" rel="noopener">Google Maps</a></div>
+</div>
+
+<div class="card alt"><div class="top"><div class="num g">B</div><div>
+<div class="time">если билетов нет · бесплатно</div>
+<h2>Смотровая мэрии Tokyo (Shinjuku)</h2>
+<p>202 м, вход бесплатный, 9:30-22:00 (вход до 21:30). От Shibuya 3 остановки по Yamanote до Shinjuku, потом ~10 мин пешком от западного выхода. Fuji оттуда тоже видно.</p>
+</div></div>
+<div class="pics">
+<figure><img src="img/tmg.jpg" alt="Вид с мэрии" loading="lazy"><figcaption>Вид со смотровой. <a href="https://commons.wikimedia.org/wiki/File:A_view_from_Tokyo_Metropolitan_Government_Building_Observation_-1_(7283081598).jpg">Takashi Hososhima, CC BY-SA 2.0</a></figcaption></figure>
+</div>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Shibuya+Station&destination=Tokyo+Metropolitan+Government+Building&travelmode=transit" target="_blank" rel="noopener">Маршрут из Shibuya</a></div>
+</div>
+
+<div class="card"><div class="top"><div class="num">7</div><div>
+<div class="time">вечер · 28-31 мин · 253 ¥</div>
+<h2>Ужин в Shibuya и домой</h2>
+<p>Обратно: Yamanote до Yoyogi, там жёлтая Sobu до Akihabara.</p>
+<div class="btns"><a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Shibuya+Station&destination=Akihabara+Station&travelmode=transit" target="_blank" rel="noopener">Маршрут домой</a></div>
+</div></div></div>
+
+<h3>Следующие дни</h3>
+<ul>
+<li><b>Вс 11.10:</b> у вершины Fuji 0-11% облаков. Это единственный надёжный день для Hakone, в пн облачность там ~50%. Если едем, места на Romancecar из Shinjuku купить сегодня.</li>
+<li><b>Пн 12.10, праздник:</b> открыт сад Shinjuku Gyoen. Конные лучники yabusame в парке Toyama обычно в этот день, объявления на 2026 нет. Главный день фестиваля Kappabashi.</li>
+<li><b>Вт 13.10, облачно, слабая морось:</b> старый Tokyo рядом с отелем - Asakusa, Yanaka, Ueno.</li>
+</ul>
+
+<div class="foot">Срез 10.10.2026, 10:30 JST. Погода: Open-Meteo. Часы: <a href="https://www.meijijingu.or.jp/en/visit/">Meiji Jingu</a>, <a href="https://www.shibuya-scramble-square.com/sky/ticket/">Shibuya Sky</a>, <a href="https://www.gotokyo.org/en/tourists/info/observatory.html">GO TOKYO</a>. Поезда: Yahoo!乗換案内. Карта: Esri. Фото: Wikimedia Commons.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+var pts=[
+ {n:'2',name:'Meiji Jingu',ll:[35.6748,139.6996]},
+ {n:'',name:'JR Harajuku',ll:[35.6705,139.7024]},
+ {n:'3',name:'Omotesando',ll:[35.6672,139.7089]},
+ {n:'4',name:'Cat Street',ll:[35.6670,139.7063]},
+ {n:'5',name:'Miyashita Park',ll:[35.6620,139.7019]},
+ {n:'',name:'Перекрёсток Shibuya',ll:[35.6595,139.7005]},
+ {n:'6',name:'SHIBUYA SKY',ll:[35.6584,139.7022]}
+];
+var map=L.map('map',{scrollWheelZoom:false});
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles © Esri',maxZoom:18}).addTo(map);
+function pin(t,g){return L.divIcon({className:'',html:'<div class="pin'+(g?' g':'')+'">'+t+'</div>',iconSize:[26,26],iconAnchor:[13,13]})}
+var route=[pts[1].ll,pts[0].ll,pts[1].ll,pts[2].ll,pts[3].ll,pts[4].ll,pts[5].ll,pts[6].ll];
+L.polyline(route,{color:'#c2410c',weight:4,opacity:.7,dashArray:'6 6'}).addTo(map);
+pts.forEach(function(p){
+ if(p.n){L.marker(p.ll,{icon:pin(p.n)}).addTo(map).bindPopup('<b>'+p.name+'</b><br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.name==='Omotesando'?'Omotesando Hills':p.name)+'">Google Maps</a>');}
+ else{L.circleMarker(p.ll,{radius:5,color:'#c2410c',fillOpacity:1}).addTo(map).bindPopup(p.name);}
+});
+L.marker([35.6986,139.7739],{icon:pin('1')}).addTo(map).bindPopup('<b>JR Akihabara</b> - старт');
+L.marker([35.6895,139.6917],{icon:pin('B',1)}).addTo(map).bindPopup('<b>Смотровая мэрии</b> - запасной вариант');
+map.fitBounds(L.latLngBounds(pts.map(function(p){return p.ll})),{padding:[24,24]});
+var me;
+document.getElementById('loc').onclick=function(e){e.preventDefault();
+ if(!navigator.geolocation){alert('Геолокация недоступна');return;}
+ navigator.geolocation.getCurrentPosition(function(pos){var ll=[pos.coords.latitude,pos.coords.longitude];
+  if(me)map.removeLayer(me);me=L.circleMarker(ll,{radius:8,color:'#1d4ed8',fillColor:'#3b82f6',fillOpacity:.9}).addTo(map).bindPopup('Я здесь');map.setView(ll,15);},
+ function(){alert('Не получилось определить место');},{enableHighAccuracy:true,timeout:10000});};
+</script>
+</body>
+</html>
